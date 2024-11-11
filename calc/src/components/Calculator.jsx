@@ -3,6 +3,18 @@ import React, { useState } from "react";
 const Calculator = () => {
   const [result, setResult] = useState(null);
   const [display, setDisplay] = useState("");
+  let arr = [];
+
+  function displayCharacters(btn) {
+    // arr.push(btn);
+    if (btn !== "=" && btn !== "C") {
+      setDisplay((prev) => prev + btn);
+      console.log(btn);
+    }
+    if (btn === "C") {
+      setDisplay("");
+    }
+  }
 
   let buttons = [7, 8, 9, "+", 4, 5, 6, "-", 1, 2, 3, "*", "C", 0, "=", "/"];
   let keypad = buttons.map((btn) => {
@@ -12,7 +24,7 @@ const Calculator = () => {
         key={btn}
         value={btn}
         onClick={() => {
-          setDisplay((pre) => pre + btn);
+          displayCharacters(btn);
         }}
         style={{
           border: "2px solid black",
